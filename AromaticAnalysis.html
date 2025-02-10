@@ -15276,11 +15276,11 @@ AAV9: 7WJW</p>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="c1"># Load the two CSV files</span>
-<span class="n">aromatic_mismatches</span> <span class="o">=</span> <span class="s2">&quot;/Users/greer/Desktop/AAV5_9_AromaticsAnalysis/mybook/aromatic_mismatches.csv&quot;</span>  <span class="c1"># Replace with actual path to the first file</span>
-<span class="n">residue_positions</span> <span class="o">=</span> <span class="s2">&quot;/Users/greer/Desktop/AAV5_9_AromaticsAnalysis/mybook/residue_positions.csv&quot;</span>  <span class="c1"># Replace with actual path to the second file</span>
+<span class="n">aromatic_mismatches</span> <span class="o">=</span> <span class="s2">&quot;/Users/greer/Desktop/AAV5_9_AromaticsAnalysis/mybook/aromatic_mismatches.csv&quot;</span>  
+<span class="n">residue_positions</span> <span class="o">=</span> <span class="s2">&quot;/Users/greer/Desktop/AAV5_9_AromaticsAnalysis/mybook/residue_positions.csv&quot;</span>  
 
-<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">aromatic_mismatches</span><span class="p">)</span>  <span class="c1"># The file with &quot;Sequence_ID&quot;, &quot;Aligned_Position&quot;, &quot;Residue&quot;</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">residue_positions</span><span class="p">)</span>  <span class="c1"># The file with &quot;Original_Sequence_ID&quot;, &quot;Original_Sequence_Position&quot;, &quot;Aligned_Sequence_Position&quot;, &quot;Residue&quot;</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">aromatic_mismatches</span><span class="p">)</span>  
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">residue_positions</span><span class="p">)</span>  
 
 <span class="c1"># Merge the dataframes on both &quot;Aligned_Sequence_Position&quot; and &quot;Sequence_ID&quot;, keeping all columns from df1</span>
 <span class="n">merged_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">[[</span><span class="s2">&quot;Sequence_ID&quot;</span><span class="p">,</span> <span class="s2">&quot;Original_Sequence_Position&quot;</span><span class="p">,</span> <span class="s2">&quot;Aligned_Sequence_Position&quot;</span><span class="p">,</span> <span class="s2">&quot;Residue&quot;</span><span class="p">]],</span> 
@@ -15289,7 +15289,7 @@ AAV9: 7WJW</p>
 <span class="n">merged_df</span><span class="p">[</span><span class="s1">&#39;Sequence_ID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_df</span><span class="p">[</span><span class="s1">&#39;Sequence_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
 
 <span class="c1"># Save the merged result to a new CSV</span>
-<span class="n">mismatch_with_original_positon</span> <span class="o">=</span> <span class="s2">&quot;/Users/greer/Desktop/AAV5_9_AromaticsAnalysis/mybook/mismatch_with_original_positions.csv&quot;</span>  <span class="c1"># Replace with desired output path</span>
+<span class="n">mismatch_with_original_positon</span> <span class="o">=</span> <span class="s2">&quot;/Users/greer/Desktop/AAV5_9_AromaticsAnalysis/mybook/mismatch_with_original_positions.csv&quot;</span>  
 <span class="n">merged_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">mismatch_with_original_positon</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="n">merged_df</span>
@@ -15825,7 +15825,7 @@ AAV9: 7WJW</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[150]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -15884,7 +15884,6 @@ AAV9: 7WJW</p>
 <span class="c1"># Store results in a DataFrame</span>
 <span class="n">sasa_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sasa_1</span> <span class="o">+</span> <span class="n">sasa_2</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Structure&quot;</span><span class="p">,</span> <span class="s2">&quot;Residue&quot;</span><span class="p">,</span> <span class="s2">&quot;Residue_Position&quot;</span><span class="p">,</span> <span class="s2">&quot;SASA&quot;</span><span class="p">])</span>
 
-<span class="c1"># Specify the file path where you want to save the CSV</span>
 <span class="n">output_csv_file</span> <span class="o">=</span> <span class="s2">&quot;/Users/greer/Desktop/AAV5_9_AromaticsAnalysis/mybook/sasa_output.csv&quot;</span>
 
 <span class="c1"># Save the DataFrame to CSV</span>
