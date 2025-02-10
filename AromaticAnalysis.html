@@ -14605,22 +14605,34 @@ AAV9: 7WJW</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[117]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[144]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+
+<span class="c1">#URLs</span>
+<span class="n">AAV5seq</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/greercole/AAV_Surface_Aromatics/refs/heads/main/rcsb_pdb_7KP3.fasta&#39;</span>
+<span class="n">AAV9seq</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/greercole/AAV_Surface_Aromatics/refs/heads/main/rcsb_pdb_7WJW.fasta&#39;</span>
+
+<span class="n">response5</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">AAV5seq</span><span class="p">)</span>
+<span class="n">response9</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">AAV9seq</span><span class="p">)</span>
+<span class="n">fasta_data5</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="n">response5</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="n">fasta_data9</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="n">response9</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
 
 <span class="c1"># Load the first FASTA file</span>
-<span class="n">seq1</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/Users/greer/Desktop/AAV5_9_AromaticsAnalysis/mybook/rcsb_pdb_7KP3.fasta&#39;</span><span class="p">,</span> <span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
+<span class="n">seq1</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fasta_data5</span><span class="p">,</span> <span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
 
 <span class="c1"># Load the second FASTA file</span>
-<span class="n">seq2</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/Users/greer/Desktop/AAV5_9_AromaticsAnalysis/mybook/rcsb_pdb_7WJW.fasta&#39;</span><span class="p">,</span> <span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
+<span class="n">seq2</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fasta_data9</span><span class="p">,</span> <span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
 
 <span class="c1"># Create a list of both sequences</span>
 <span class="n">records</span> <span class="o">=</span> <span class="p">[</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">]</span>
 
 <span class="c1"># Save the merged sequence into a new FASTA file</span>
-<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="s1">&#39;/Users/greer/Desktop/AAV5_9_AromaticsAnalysis/mybook/merged.fasta&#39;</span><span class="p">,</span> <span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
+<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="s1">&#39;merged.fasta&#39;</span><span class="p">,</span> <span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14638,7 +14650,7 @@ AAV9: 7WJW</p>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[117]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[144]:</div>
 
 
 
@@ -14665,17 +14677,19 @@ AAV9: 7WJW</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[118]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[145]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">AlignIO</span><span class="p">,</span> <span class="n">SeqIO</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 
 <span class="k">def</span> <span class="nf">run_clustal_omega</span><span class="p">(</span><span class="n">input_fasta</span><span class="p">,</span> <span class="n">output_clustal</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Run Clustal Omega using subprocess.&quot;&quot;&quot;</span>
@@ -14713,21 +14727,31 @@ AAV9: 7WJW</p>
     
     <span class="k">return</span> <span class="n">mapping</span>
 
-<span class="c1"># File paths</span>
-<span class="n">merged_fasta</span> <span class="o">=</span> <span class="s2">&quot;/Users/greer/Desktop/AAV5_9_AromaticsAnalysis/mybook/merged.fasta&quot;</span>
-<span class="n">aligned_clustal</span> <span class="o">=</span> <span class="s2">&quot;/Users/greer/Desktop/AAV5_9_AromaticsAnalysis/mybook/Aligned.clustal&quot;</span>
-<span class="n">output_csv</span> <span class="o">=</span> <span class="s2">&quot;/Users/greer/Desktop/AAV5_9_AromaticsAnalysis/mybook/residue_positions.csv&quot;</span>
+<span class="c1"># **Step 1: Download the merged FASTA file**</span>
+<span class="n">merged_fasta_url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/greercole/AAV_Surface_Aromatics/main/merged.fasta&quot;</span>
+<span class="n">merged_fasta_local</span> <span class="o">=</span> <span class="s2">&quot;merged.fasta&quot;</span>
+<span class="n">aligned_clustal</span> <span class="o">=</span> <span class="s2">&quot;Aligned.clustal&quot;</span>
+<span class="n">output_csv</span> <span class="o">=</span> <span class="s2">&quot;residue_positions.csv&quot;</span>
 
-<span class="c1"># Run Clustal Omega</span>
-<span class="n">run_clustal_omega</span><span class="p">(</span><span class="n">merged_fasta</span><span class="p">,</span> <span class="n">aligned_clustal</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">merged_fasta_url</span><span class="p">)</span>
 
-<span class="c1"># Read original sequences before alignment</span>
-<span class="n">original_sequences</span> <span class="o">=</span> <span class="p">{</span><span class="n">seq</span><span class="o">.</span><span class="n">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span> <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">merged_fasta</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)}</span>
+<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">merged_fasta_local</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: Unable to download the merged FASTA file.&quot;</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># Read and print the alignment</span>
+<span class="c1"># **Step 2: Run Clustal Omega**</span>
+<span class="n">run_clustal_omega</span><span class="p">(</span><span class="n">merged_fasta_local</span><span class="p">,</span> <span class="n">aligned_clustal</span><span class="p">)</span>
+
+<span class="c1"># **Step 3: Read original sequences before alignment**</span>
+<span class="n">original_sequences</span> <span class="o">=</span> <span class="p">{</span><span class="n">seq</span><span class="o">.</span><span class="n">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span> <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">merged_fasta_local</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)}</span>
+
+<span class="c1"># **Step 4: Read the alignment**</span>
 <span class="n">alignment</span> <span class="o">=</span> <span class="n">read_alignment</span><span class="p">(</span><span class="n">aligned_clustal</span><span class="p">)</span>
 
-<span class="c1"># Process the aligned sequences</span>
+<span class="c1"># **Step 5: Process aligned sequences**</span>
 <span class="n">residue_positions_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">if</span> <span class="n">alignment</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">seq_record</span> <span class="ow">in</span> <span class="n">alignment</span><span class="p">:</span>
@@ -14739,145 +14763,14 @@ AAV9: 7WJW</p>
         <span class="n">residue_positions</span> <span class="o">=</span> <span class="n">track_positions</span><span class="p">(</span><span class="n">original_seq</span><span class="p">,</span> <span class="n">aligned_seq</span><span class="p">,</span> <span class="n">seq_id</span><span class="p">)</span>
         <span class="n">residue_positions_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">residue_positions</span><span class="p">)</span>
 
-<span class="c1"># Convert to DataFrame and save as CSV</span>
+<span class="c1"># **Step 6: Convert to DataFrame and save as CSV**</span>
 <span class="n">df_residue_positions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">residue_positions_list</span><span class="p">)</span>
 <span class="n">df_residue_positions</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_csv</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="n">df_residue_positions</span>
 </pre></div>
 
      </div>
 </div>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[118]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Sequence_ID</th>
-      <th>Original_Sequence_Position</th>
-      <th>Aligned_Sequence_Position</th>
-      <th>Residue</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>7KP3_1|Chain</td>
-      <td>1</td>
-      <td>1</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>7KP3_1|Chain</td>
-      <td>2</td>
-      <td>2</td>
-      <td>F</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>7KP3_1|Chain</td>
-      <td>3</td>
-      <td>3</td>
-      <td>V</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>7KP3_1|Chain</td>
-      <td>4</td>
-      <td>4</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>7KP3_1|Chain</td>
-      <td>5</td>
-      <td>5</td>
-      <td>H</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1236</th>
-      <td>7WJW_1|Chain</td>
-      <td>514</td>
-      <td>726</td>
-      <td>L</td>
-    </tr>
-    <tr>
-      <th>1237</th>
-      <td>7WJW_1|Chain</td>
-      <td>515</td>
-      <td>727</td>
-      <td>T</td>
-    </tr>
-    <tr>
-      <th>1238</th>
-      <td>7WJW_1|Chain</td>
-      <td>516</td>
-      <td>728</td>
-      <td>R</td>
-    </tr>
-    <tr>
-      <th>1239</th>
-      <td>7WJW_1|Chain</td>
-      <td>517</td>
-      <td>729</td>
-      <td>N</td>
-    </tr>
-    <tr>
-      <th>1240</th>
-      <td>7WJW_1|Chain</td>
-      <td>518</td>
-      <td>730</td>
-      <td>L</td>
-    </tr>
-  </tbody>
-</table>
-<p>1241 rows × 4 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -14909,7 +14802,7 @@ AAV9: 7WJW</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[119]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[146]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
@@ -14978,7 +14871,7 @@ AAV9: 7WJW</p>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[119]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[146]:</div>
 
 
 
@@ -15372,12 +15265,12 @@ AAV9: 7WJW</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[147]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -15407,6 +15300,514 @@ AAV9: 7WJW</p>
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[147]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sequence_ID</th>
+      <th>Aligned_Sequence_Position</th>
+      <th>Residue_x</th>
+      <th>Original_Sequence_Position</th>
+      <th>Residue_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7KP3</td>
+      <td>2</td>
+      <td>F</td>
+      <td>2</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7KP3</td>
+      <td>5</td>
+      <td>H</td>
+      <td>5</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7KP3</td>
+      <td>9</td>
+      <td>W</td>
+      <td>9</td>
+      <td>W</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7KP3</td>
+      <td>20</td>
+      <td>F</td>
+      <td>20</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7KP3</td>
+      <td>36</td>
+      <td>H</td>
+      <td>36</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7KP3</td>
+      <td>48</td>
+      <td>Y</td>
+      <td>48</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7KP3</td>
+      <td>50</td>
+      <td>Y</td>
+      <td>50</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7KP3</td>
+      <td>73</td>
+      <td>H</td>
+      <td>73</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>7KP3</td>
+      <td>77</td>
+      <td>Y</td>
+      <td>77</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>7KP3</td>
+      <td>88</td>
+      <td>Y</td>
+      <td>88</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>7KP3</td>
+      <td>91</td>
+      <td>Y</td>
+      <td>91</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>7KP3</td>
+      <td>93</td>
+      <td>H</td>
+      <td>93</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>7KP3</td>
+      <td>98</td>
+      <td>F</td>
+      <td>98</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>7KP3</td>
+      <td>108</td>
+      <td>F</td>
+      <td>108</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>7KP3</td>
+      <td>117</td>
+      <td>F</td>
+      <td>117</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>7KP3</td>
+      <td>127</td>
+      <td>F</td>
+      <td>127</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>7KP3</td>
+      <td>146</td>
+      <td>H</td>
+      <td>146</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>7KP3</td>
+      <td>147</td>
+      <td>F</td>
+      <td>147</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>7KP3</td>
+      <td>282</td>
+      <td>W</td>
+      <td>281</td>
+      <td>W</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>7WJW</td>
+      <td>282</td>
+      <td>F</td>
+      <td>75</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>7KP3</td>
+      <td>294</td>
+      <td>Y</td>
+      <td>293</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>7WJW</td>
+      <td>304</td>
+      <td>F</td>
+      <td>97</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>7WJW</td>
+      <td>349</td>
+      <td>H</td>
+      <td>142</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>7KP3</td>
+      <td>386</td>
+      <td>F</td>
+      <td>385</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>7WJW</td>
+      <td>386</td>
+      <td>Y</td>
+      <td>177</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>7KP3</td>
+      <td>417</td>
+      <td>F</td>
+      <td>416</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>7WJW</td>
+      <td>417</td>
+      <td>Y</td>
+      <td>208</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>7WJW</td>
+      <td>419</td>
+      <td>H</td>
+      <td>210</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>7KP3</td>
+      <td>424</td>
+      <td>F</td>
+      <td>423</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>7WJW</td>
+      <td>437</td>
+      <td>Y</td>
+      <td>228</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>7KP3</td>
+      <td>438</td>
+      <td>F</td>
+      <td>437</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>7KP3</td>
+      <td>462</td>
+      <td>Y</td>
+      <td>456</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>7KP3</td>
+      <td>466</td>
+      <td>Y</td>
+      <td>460</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>7KP3</td>
+      <td>469</td>
+      <td>W</td>
+      <td>463</td>
+      <td>W</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>7WJW</td>
+      <td>469</td>
+      <td>Y</td>
+      <td>260</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>7KP3</td>
+      <td>470</td>
+      <td>F</td>
+      <td>464</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>7WJW</td>
+      <td>475</td>
+      <td>Y</td>
+      <td>266</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>7KP3</td>
+      <td>480</td>
+      <td>W</td>
+      <td>474</td>
+      <td>W</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>7WJW</td>
+      <td>492</td>
+      <td>F</td>
+      <td>283</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>7KP3</td>
+      <td>494</td>
+      <td>F</td>
+      <td>488</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>7WJW</td>
+      <td>494</td>
+      <td>W</td>
+      <td>285</td>
+      <td>W</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>7WJW</td>
+      <td>500</td>
+      <td>W</td>
+      <td>291</td>
+      <td>W</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>7KP3</td>
+      <td>507</td>
+      <td>Y</td>
+      <td>501</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>7WJW</td>
+      <td>518</td>
+      <td>H</td>
+      <td>309</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>7WJW</td>
+      <td>525</td>
+      <td>F</td>
+      <td>316</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>7KP3</td>
+      <td>526</td>
+      <td>Y</td>
+      <td>520</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>7WJW</td>
+      <td>526</td>
+      <td>F</td>
+      <td>317</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>7KP3</td>
+      <td>547</td>
+      <td>Y</td>
+      <td>541</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>7KP3</td>
+      <td>568</td>
+      <td>Y</td>
+      <td>562</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>7WJW</td>
+      <td>571</td>
+      <td>Y</td>
+      <td>359</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>7WJW</td>
+      <td>578</td>
+      <td>H</td>
+      <td>366</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>7WJW</td>
+      <td>589</td>
+      <td>W</td>
+      <td>377</td>
+      <td>W</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>7KP3</td>
+      <td>590</td>
+      <td>Y</td>
+      <td>584</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>7WJW</td>
+      <td>618</td>
+      <td>H</td>
+      <td>406</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>7KP3</td>
+      <td>622</td>
+      <td>H</td>
+      <td>616</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>7WJW</td>
+      <td>700</td>
+      <td>Y</td>
+      <td>488</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>7KP3</td>
+      <td>704</td>
+      <td>F</td>
+      <td>697</td>
+      <td>F</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -15419,19 +15820,19 @@ AAV9: 7WJW</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[122]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[150]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">PDB</span>
 
 <span class="c1"># Enable debug messages</span>
-<span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">True</span>  
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">False</span>  
 
 <span class="c1"># Paths to input files</span>
 <span class="n">pdb_file_1</span> <span class="o">=</span> <span class="s2">&quot;/Users/greer/Desktop/AAV5_9_AromaticsAnalysis/mybook/7kp3.pdb&quot;</span>
@@ -15488,1187 +15889,11 @@ AAV9: 7WJW</p>
 
 <span class="c1"># Save the DataFrame to CSV</span>
 <span class="n">sasa_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_csv_file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="n">sasa_df</span>
 </pre></div>
 
      </div>
 </div>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>7KP3 | ASP 209 -&gt; SASA: 140.84
-7KP3 | GLY 210 -&gt; SASA: 18.11
-7KP3 | VAL 211 -&gt; SASA: 98.46
-7KP3 | GLY 212 -&gt; SASA: 88.95
-7KP3 | ASN 213 -&gt; SASA: 79.72
-7KP3 | ALA 214 -&gt; SASA: 70.85
-7KP3 | SER 215 -&gt; SASA: 11.69
-7KP3 | GLY 216 -&gt; SASA: 14.52
-7KP3 | ASP 217 -&gt; SASA: 103.90
-7KP3 | TRP 218 -&gt; SASA: 131.16
-7KP3 | HIS 219 -&gt; SASA: 81.80
-7KP3 | CYS 220 -&gt; SASA: 54.77
-7KP3 | ASP 221 -&gt; SASA: 99.59
-7KP3 | SER 222 -&gt; SASA: 24.14
-7KP3 | THR 223 -&gt; SASA: 70.81
-7KP3 | TRP 224 -&gt; SASA: 46.45
-7KP3 | MET 225 -&gt; SASA: 81.04
-7KP3 | GLY 226 -&gt; SASA: 59.00
-7KP3 | ASP 227 -&gt; SASA: 70.63
-7KP3 | ARG 228 -&gt; SASA: 59.90
-7KP3 | VAL 229 -&gt; SASA: 0.00
-7KP3 | VAL 230 -&gt; SASA: 24.02
-7KP3 | THR 231 -&gt; SASA: 0.00
-7KP3 | LYS 232 -&gt; SASA: 65.42
-7KP3 | SER 233 -&gt; SASA: 4.29
-7KP3 | THR 234 -&gt; SASA: 0.00
-7KP3 | ARG 235 -&gt; SASA: 6.56
-7KP3 | THR 236 -&gt; SASA: 32.84
-7KP3 | TRP 237 -&gt; SASA: 0.00
-7KP3 | VAL 238 -&gt; SASA: 36.23
-7KP3 | LEU 239 -&gt; SASA: 0.00
-7KP3 | PRO 240 -&gt; SASA: 42.13
-7KP3 | SER 241 -&gt; SASA: 34.67
-7KP3 | TYR 242 -&gt; SASA: 44.66
-7KP3 | ASN 243 -&gt; SASA: 24.27
-7KP3 | ASN 244 -&gt; SASA: 77.98
-7KP3 | HIS 245 -&gt; SASA: 39.16
-7KP3 | GLN 246 -&gt; SASA: 91.80
-7KP3 | TYR 247 -&gt; SASA: 58.25
-7KP3 | ARG 248 -&gt; SASA: 100.34
-7KP3 | GLU 249 -&gt; SASA: 103.76
-7KP3 | ILE 250 -&gt; SASA: 53.14
-7KP3 | LYS 251 -&gt; SASA: 84.13
-7KP3 | SER 252 -&gt; SASA: 26.14
-7KP3 | GLY 253 -&gt; SASA: 23.13
-7KP3 | SER 254 -&gt; SASA: 75.47
-7KP3 | VAL 255 -&gt; SASA: 67.63
-7KP3 | ASP 256 -&gt; SASA: 142.12
-7KP3 | GLY 257 -&gt; SASA: 77.94
-7KP3 | SER 258 -&gt; SASA: 13.67
-7KP3 | ASN 259 -&gt; SASA: 59.81
-7KP3 | ALA 260 -&gt; SASA: 19.83
-7KP3 | ASN 261 -&gt; SASA: 69.45
-7KP3 | ALA 262 -&gt; SASA: 8.57
-7KP3 | TYR 263 -&gt; SASA: 85.28
-7KP3 | PHE 264 -&gt; SASA: 4.83
-7KP3 | GLY 265 -&gt; SASA: 0.00
-7KP3 | TYR 266 -&gt; SASA: 40.34
-7KP3 | SER 267 -&gt; SASA: 15.43
-7KP3 | THR 268 -&gt; SASA: 0.00
-7KP3 | PRO 269 -&gt; SASA: 8.04
-7KP3 | TRP 270 -&gt; SASA: 0.00
-7KP3 | GLY 271 -&gt; SASA: 0.00
-7KP3 | TYR 272 -&gt; SASA: 15.00
-7KP3 | PHE 273 -&gt; SASA: 7.50
-7KP3 | ASP 274 -&gt; SASA: 1.07
-7KP3 | PHE 275 -&gt; SASA: 11.85
-7KP3 | ASN 276 -&gt; SASA: 6.61
-7KP3 | ARG 277 -&gt; SASA: 72.45
-7KP3 | PHE 278 -&gt; SASA: 0.00
-7KP3 | HIS 279 -&gt; SASA: 31.33
-7KP3 | SER 280 -&gt; SASA: 0.00
-7KP3 | HIS 281 -&gt; SASA: 16.23
-7KP3 | TRP 282 -&gt; SASA: 5.63
-7KP3 | SER 283 -&gt; SASA: 45.82
-7KP3 | PRO 284 -&gt; SASA: 39.17
-7KP3 | ARG 285 -&gt; SASA: 149.99
-7KP3 | ASP 286 -&gt; SASA: 37.77
-7KP3 | TRP 287 -&gt; SASA: 0.00
-7KP3 | GLN 288 -&gt; SASA: 41.89
-7KP3 | ARG 289 -&gt; SASA: 102.14
-7KP3 | LEU 290 -&gt; SASA: 1.21
-7KP3 | ILE 291 -&gt; SASA: 0.00
-7KP3 | ASN 292 -&gt; SASA: 17.75
-7KP3 | ASN 293 -&gt; SASA: 71.09
-7KP3 | TYR 294 -&gt; SASA: 16.34
-7KP3 | TRP 295 -&gt; SASA: 19.32
-7KP3 | GLY 296 -&gt; SASA: 0.00
-7KP3 | PHE 297 -&gt; SASA: 0.00
-7KP3 | ARG 298 -&gt; SASA: 44.20
-7KP3 | PRO 299 -&gt; SASA: 2.28
-7KP3 | ARG 300 -&gt; SASA: 80.52
-7KP3 | SER 301 -&gt; SASA: 30.15
-7KP3 | LEU 302 -&gt; SASA: 3.49
-7KP3 | ARG 303 -&gt; SASA: 103.44
-7KP3 | VAL 304 -&gt; SASA: 2.42
-7KP3 | LYS 305 -&gt; SASA: 59.72
-7KP3 | ILE 306 -&gt; SASA: 0.00
-7KP3 | PHE 307 -&gt; SASA: 2.42
-7KP3 | ASN 308 -&gt; SASA: 40.86
-7KP3 | ILE 309 -&gt; SASA: 2.14
-7KP3 | GLN 310 -&gt; SASA: 81.42
-7KP3 | VAL 311 -&gt; SASA: 3.39
-7KP3 | LYS 312 -&gt; SASA: 42.70
-7KP3 | GLU 313 -&gt; SASA: 57.06
-7KP3 | VAL 314 -&gt; SASA: 30.05
-7KP3 | THR 315 -&gt; SASA: 44.94
-7KP3 | VAL 316 -&gt; SASA: 101.54
-7KP3 | GLN 317 -&gt; SASA: 71.39
-7KP3 | ASP 318 -&gt; SASA: 137.94
-7KP3 | SER 319 -&gt; SASA: 97.01
-7KP3 | THR 320 -&gt; SASA: 78.85
-7KP3 | THR 321 -&gt; SASA: 74.82
-7KP3 | THR 322 -&gt; SASA: 62.10
-7KP3 | ILE 323 -&gt; SASA: 103.49
-7KP3 | ALA 324 -&gt; SASA: 41.06
-7KP3 | ASN 325 -&gt; SASA: 88.05
-7KP3 | ASN 326 -&gt; SASA: 33.78
-7KP3 | LEU 327 -&gt; SASA: 80.82
-7KP3 | THR 328 -&gt; SASA: 85.38
-7KP3 | SER 329 -&gt; SASA: 3.35
-7KP3 | THR 330 -&gt; SASA: 23.40
-7KP3 | VAL 331 -&gt; SASA: 0.00
-7KP3 | GLN 332 -&gt; SASA: 23.86
-7KP3 | VAL 333 -&gt; SASA: 1.07
-7KP3 | PHE 334 -&gt; SASA: 4.83
-7KP3 | THR 335 -&gt; SASA: 22.54
-7KP3 | ASP 336 -&gt; SASA: 3.35
-7KP3 | ASP 337 -&gt; SASA: 77.36
-7KP3 | ASP 338 -&gt; SASA: 107.46
-7KP3 | TYR 339 -&gt; SASA: 47.59
-7KP3 | GLN 340 -&gt; SASA: 103.95
-7KP3 | LEU 341 -&gt; SASA: 11.12
-7KP3 | PRO 342 -&gt; SASA: 30.08
-7KP3 | TYR 343 -&gt; SASA: 40.11
-7KP3 | VAL 344 -&gt; SASA: 26.16
-7KP3 | VAL 345 -&gt; SASA: 12.74
-7KP3 | GLY 346 -&gt; SASA: 19.85
-7KP3 | ASN 347 -&gt; SASA: 86.89
-7KP3 | GLY 348 -&gt; SASA: 63.20
-7KP3 | THR 349 -&gt; SASA: 69.64
-7KP3 | GLU 350 -&gt; SASA: 124.49
-7KP3 | GLY 351 -&gt; SASA: 27.73
-7KP3 | CYS 352 -&gt; SASA: 17.54
-7KP3 | LEU 353 -&gt; SASA: 2.28
-7KP3 | PRO 354 -&gt; SASA: 14.49
-7KP3 | ALA 355 -&gt; SASA: 30.27
-7KP3 | PHE 356 -&gt; SASA: 47.10
-7KP3 | PRO 357 -&gt; SASA: 43.47
-7KP3 | PRO 358 -&gt; SASA: 88.81
-7KP3 | GLN 359 -&gt; SASA: 67.65
-7KP3 | VAL 360 -&gt; SASA: 102.85
-7KP3 | PHE 361 -&gt; SASA: 13.28
-7KP3 | THR 362 -&gt; SASA: 70.59
-7KP3 | LEU 363 -&gt; SASA: 0.00
-7KP3 | PRO 364 -&gt; SASA: 21.74
-7KP3 | GLN 365 -&gt; SASA: 63.83
-7KP3 | TYR 366 -&gt; SASA: 2.28
-7KP3 | GLY 367 -&gt; SASA: 29.42
-7KP3 | TYR 368 -&gt; SASA: 12.08
-7KP3 | ALA 369 -&gt; SASA: 63.95
-7KP3 | THR 370 -&gt; SASA: 24.12
-7KP3 | LEU 371 -&gt; SASA: 74.87
-7KP3 | ASN 372 -&gt; SASA: 31.09
-7KP3 | ARG 373 -&gt; SASA: 107.43
-7KP3 | ASP 374 -&gt; SASA: 120.87
-7KP3 | ASN 375 -&gt; SASA: 28.03
-7KP3 | THR 376 -&gt; SASA: 45.89
-7KP3 | GLU 377 -&gt; SASA: 73.04
-7KP3 | ASN 378 -&gt; SASA: 57.32
-7KP3 | PRO 379 -&gt; SASA: 52.73
-7KP3 | THR 380 -&gt; SASA: 42.91
-7KP3 | GLU 381 -&gt; SASA: 184.38
-7KP3 | ARG 382 -&gt; SASA: 189.82
-7KP3 | SER 383 -&gt; SASA: 28.27
-7KP3 | SER 384 -&gt; SASA: 35.94
-7KP3 | PHE 385 -&gt; SASA: 101.25
-7KP3 | PHE 386 -&gt; SASA: 61.59
-7KP3 | CYS 387 -&gt; SASA: 48.19
-7KP3 | LEU 388 -&gt; SASA: 0.00
-7KP3 | GLU 389 -&gt; SASA: 73.75
-7KP3 | TYR 390 -&gt; SASA: 189.06
-7KP3 | PHE 391 -&gt; SASA: 41.45
-7KP3 | PRO 392 -&gt; SASA: 119.40
-7KP3 | SER 393 -&gt; SASA: 37.91
-7KP3 | LYS 394 -&gt; SASA: 128.00
-7KP3 | MET 395 -&gt; SASA: 109.18
-7KP3 | LEU 396 -&gt; SASA: 8.45
-7KP3 | ARG 397 -&gt; SASA: 114.74
-7KP3 | THR 398 -&gt; SASA: 30.06
-7KP3 | GLY 399 -&gt; SASA: 13.22
-7KP3 | ASN 400 -&gt; SASA: 58.43
-7KP3 | ASN 401 -&gt; SASA: 75.67
-7KP3 | PHE 402 -&gt; SASA: 25.36
-7KP3 | GLU 403 -&gt; SASA: 79.45
-7KP3 | PHE 404 -&gt; SASA: 25.36
-7KP3 | THR 405 -&gt; SASA: 78.84
-7KP3 | TYR 406 -&gt; SASA: 23.88
-7KP3 | ASN 407 -&gt; SASA: 114.27
-7KP3 | PHE 408 -&gt; SASA: 20.77
-7KP3 | GLU 409 -&gt; SASA: 58.77
-7KP3 | GLU 410 -&gt; SASA: 170.36
-7KP3 | VAL 411 -&gt; SASA: 10.64
-7KP3 | PRO 412 -&gt; SASA: 102.38
-7KP3 | PHE 413 -&gt; SASA: 50.34
-7KP3 | HIS 414 -&gt; SASA: 12.35
-7KP3 | SER 415 -&gt; SASA: 41.48
-7KP3 | SER 416 -&gt; SASA: 1.21
-7KP3 | PHE 417 -&gt; SASA: 35.02
-7KP3 | ALA 418 -&gt; SASA: 9.66
-7KP3 | PRO 419 -&gt; SASA: 15.27
-7KP3 | SER 420 -&gt; SASA: 64.58
-7KP3 | GLN 421 -&gt; SASA: 57.83
-7KP3 | ASN 422 -&gt; SASA: 62.27
-7KP3 | LEU 423 -&gt; SASA: 18.37
-7KP3 | PHE 424 -&gt; SASA: 77.02
-7KP3 | LYS 425 -&gt; SASA: 91.32
-7KP3 | LEU 426 -&gt; SASA: 68.83
-7KP3 | ALA 427 -&gt; SASA: 41.54
-7KP3 | ASN 428 -&gt; SASA: 82.57
-7KP3 | PRO 429 -&gt; SASA: 75.52
-7KP3 | LEU 430 -&gt; SASA: 153.98
-7KP3 | VAL 431 -&gt; SASA: 84.52
-7KP3 | ASP 432 -&gt; SASA: 66.77
-7KP3 | GLN 433 -&gt; SASA: 35.48
-7KP3 | TYR 434 -&gt; SASA: 202.48
-7KP3 | LEU 435 -&gt; SASA: 62.80
-7KP3 | TYR 436 -&gt; SASA: 117.28
-7KP3 | ARG 437 -&gt; SASA: 63.11
-7KP3 | PHE 438 -&gt; SASA: 118.45
-7KP3 | VAL 439 -&gt; SASA: 60.99
-7KP3 | SER 440 -&gt; SASA: 41.70
-7KP3 | THR 441 -&gt; SASA: 72.83
-7KP3 | ASN 442 -&gt; SASA: 62.27
-7KP3 | ASN 443 -&gt; SASA: 159.32
-7KP3 | THR 444 -&gt; SASA: 121.05
-7KP3 | GLY 445 -&gt; SASA: 43.97
-7KP3 | GLY 446 -&gt; SASA: 28.87
-7KP3 | VAL 447 -&gt; SASA: 90.33
-7KP3 | GLN 448 -&gt; SASA: 71.45
-7KP3 | PHE 449 -&gt; SASA: 127.75
-7KP3 | ASN 450 -&gt; SASA: 68.28
-7KP3 | LYS 451 -&gt; SASA: 78.56
-7KP3 | ASN 452 -&gt; SASA: 0.00
-7KP3 | LEU 453 -&gt; SASA: 69.52
-7KP3 | ALA 454 -&gt; SASA: 30.31
-7KP3 | GLY 455 -&gt; SASA: 32.34
-7KP3 | ARG 456 -&gt; SASA: 124.47
-7KP3 | TYR 457 -&gt; SASA: 44.28
-7KP3 | ALA 458 -&gt; SASA: 95.71
-7KP3 | ASN 459 -&gt; SASA: 55.18
-7KP3 | THR 460 -&gt; SASA: 11.12
-7KP3 | TYR 461 -&gt; SASA: 122.95
-7KP3 | LYS 462 -&gt; SASA: 59.53
-7KP3 | ASN 463 -&gt; SASA: 127.67
-7KP3 | TRP 464 -&gt; SASA: 132.84
-7KP3 | PHE 465 -&gt; SASA: 85.74
-7KP3 | PRO 466 -&gt; SASA: 23.74
-7KP3 | GLY 467 -&gt; SASA: 1.21
-7KP3 | PRO 468 -&gt; SASA: 20.39
-7KP3 | MET 469 -&gt; SASA: 9.14
-7KP3 | GLY 470 -&gt; SASA: 21.51
-7KP3 | ARG 471 -&gt; SASA: 112.70
-7KP3 | THR 472 -&gt; SASA: 0.00
-7KP3 | GLN 473 -&gt; SASA: 93.12
-7KP3 | GLY 474 -&gt; SASA: 21.75
-7KP3 | TRP 475 -&gt; SASA: 53.43
-7KP3 | ASN 476 -&gt; SASA: 42.01
-7KP3 | LEU 477 -&gt; SASA: 22.81
-7KP3 | GLY 478 -&gt; SASA: 63.74
-7KP3 | SER 479 -&gt; SASA: 122.25
-7KP3 | GLY 480 -&gt; SASA: 26.55
-7KP3 | VAL 481 -&gt; SASA: 121.34
-7KP3 | ASN 482 -&gt; SASA: 64.77
-7KP3 | ARG 483 -&gt; SASA: 197.22
-7KP3 | ALA 484 -&gt; SASA: 76.43
-7KP3 | SER 485 -&gt; SASA: 124.58
-7KP3 | VAL 486 -&gt; SASA: 78.79
-7KP3 | SER 487 -&gt; SASA: 97.57
-7KP3 | ALA 488 -&gt; SASA: 60.77
-7KP3 | PHE 489 -&gt; SASA: 80.23
-7KP3 | ALA 490 -&gt; SASA: 83.18
-7KP3 | THR 491 -&gt; SASA: 96.31
-7KP3 | THR 492 -&gt; SASA: 14.47
-7KP3 | ASN 493 -&gt; SASA: 40.50
-7KP3 | ARG 494 -&gt; SASA: 83.34
-7KP3 | MET 495 -&gt; SASA: 102.47
-7KP3 | GLU 496 -&gt; SASA: 126.38
-7KP3 | LEU 497 -&gt; SASA: 113.52
-7KP3 | GLU 498 -&gt; SASA: 135.54
-7KP3 | GLY 499 -&gt; SASA: 68.05
-7KP3 | ALA 500 -&gt; SASA: 3.62
-7KP3 | SER 501 -&gt; SASA: 29.58
-7KP3 | TYR 502 -&gt; SASA: 81.40
-7KP3 | GLN 503 -&gt; SASA: 90.08
-7KP3 | VAL 504 -&gt; SASA: 38.92
-7KP3 | PRO 505 -&gt; SASA: 83.41
-7KP3 | PRO 506 -&gt; SASA: 4.83
-7KP3 | GLN 507 -&gt; SASA: 12.69
-7KP3 | PRO 508 -&gt; SASA: 72.05
-7KP3 | ASN 509 -&gt; SASA: 26.16
-7KP3 | GLY 510 -&gt; SASA: 1.09
-7KP3 | MET 511 -&gt; SASA: 10.87
-7KP3 | THR 512 -&gt; SASA: 0.00
-7KP3 | ASN 513 -&gt; SASA: 0.00
-7KP3 | ASN 514 -&gt; SASA: 3.21
-7KP3 | LEU 515 -&gt; SASA: 50.58
-7KP3 | GLN 516 -&gt; SASA: 136.13
-7KP3 | GLY 517 -&gt; SASA: 88.20
-7KP3 | SER 518 -&gt; SASA: 38.24
-7KP3 | ASN 519 -&gt; SASA: 56.34
-7KP3 | THR 520 -&gt; SASA: 25.32
-7KP3 | TYR 521 -&gt; SASA: 38.05
-7KP3 | ALA 522 -&gt; SASA: 0.00
-7KP3 | LEU 523 -&gt; SASA: 59.16
-7KP3 | GLU 524 -&gt; SASA: 33.80
-7KP3 | ASN 525 -&gt; SASA: 0.00
-7KP3 | THR 526 -&gt; SASA: 10.71
-7KP3 | MET 527 -&gt; SASA: 21.24
-7KP3 | ILE 528 -&gt; SASA: 72.52
-7KP3 | PHE 529 -&gt; SASA: 31.40
-7KP3 | ASN 530 -&gt; SASA: 49.45
-7KP3 | SER 531 -&gt; SASA: 28.81
-7KP3 | GLN 532 -&gt; SASA: 101.13
-7KP3 | PRO 533 -&gt; SASA: 123.94
-7KP3 | ALA 534 -&gt; SASA: 34.64
-7KP3 | ASN 535 -&gt; SASA: 114.22
-7KP3 | PRO 536 -&gt; SASA: 117.63
-7KP3 | GLY 537 -&gt; SASA: 73.36
-7KP3 | THR 538 -&gt; SASA: 66.12
-7KP3 | THR 539 -&gt; SASA: 137.09
-7KP3 | ALA 540 -&gt; SASA: 64.42
-7KP3 | THR 541 -&gt; SASA: 121.00
-7KP3 | TYR 542 -&gt; SASA: 92.62
-7KP3 | LEU 543 -&gt; SASA: 112.31
-7KP3 | GLU 544 -&gt; SASA: 85.15
-7KP3 | GLY 545 -&gt; SASA: 74.53
-7KP3 | ASN 546 -&gt; SASA: 73.77
-7KP3 | MET 547 -&gt; SASA: 48.68
-7KP3 | LEU 548 -&gt; SASA: 4.83
-7KP3 | ILE 549 -&gt; SASA: 42.82
-7KP3 | THR 550 -&gt; SASA: 3.49
-7KP3 | SER 551 -&gt; SASA: 28.76
-7KP3 | GLU 552 -&gt; SASA: 3.35
-7KP3 | SER 553 -&gt; SASA: 8.57
-7KP3 | GLU 554 -&gt; SASA: 54.00
-7KP3 | THR 555 -&gt; SASA: 1.21
-7KP3 | GLN 556 -&gt; SASA: 76.23
-7KP3 | PRO 557 -&gt; SASA: 30.72
-7KP3 | VAL 558 -&gt; SASA: 13.28
-7KP3 | ASN 559 -&gt; SASA: 8.75
-7KP3 | ARG 560 -&gt; SASA: 34.11
-7KP3 | VAL 561 -&gt; SASA: 28.41
-7KP3 | ALA 562 -&gt; SASA: 0.00
-7KP3 | TYR 563 -&gt; SASA: 37.67
-7KP3 | ASN 564 -&gt; SASA: 60.98
-7KP3 | VAL 565 -&gt; SASA: 58.50
-7KP3 | GLY 566 -&gt; SASA: 18.21
-7KP3 | GLY 567 -&gt; SASA: 20.53
-7KP3 | GLN 568 -&gt; SASA: 108.96
-7KP3 | MET 569 -&gt; SASA: 95.28
-7KP3 | ALA 570 -&gt; SASA: 82.77
-7KP3 | THR 571 -&gt; SASA: 85.26
-7KP3 | ASN 572 -&gt; SASA: 65.77
-7KP3 | ASN 573 -&gt; SASA: 133.63
-7KP3 | GLN 574 -&gt; SASA: 114.42
-7KP3 | SER 575 -&gt; SASA: 45.33
-7KP3 | SER 576 -&gt; SASA: 135.41
-7KP3 | THR 577 -&gt; SASA: 115.01
-7KP3 | THR 578 -&gt; SASA: 53.96
-7KP3 | ALA 579 -&gt; SASA: 79.77
-7KP3 | PRO 580 -&gt; SASA: 101.80
-7KP3 | ALA 581 -&gt; SASA: 42.66
-7KP3 | THR 582 -&gt; SASA: 79.61
-7KP3 | GLY 583 -&gt; SASA: 19.99
-7KP3 | THR 584 -&gt; SASA: 91.06
-7KP3 | TYR 585 -&gt; SASA: 42.91
-7KP3 | ASN 586 -&gt; SASA: 74.41
-7KP3 | LEU 587 -&gt; SASA: 112.68
-7KP3 | GLN 588 -&gt; SASA: 52.41
-7KP3 | GLU 589 -&gt; SASA: 116.03
-7KP3 | ILE 590 -&gt; SASA: 81.81
-7KP3 | VAL 591 -&gt; SASA: 51.66
-7KP3 | PRO 592 -&gt; SASA: 118.47
-7KP3 | GLY 593 -&gt; SASA: 25.09
-7KP3 | SER 594 -&gt; SASA: 24.80
-7KP3 | VAL 595 -&gt; SASA: 50.72
-7KP3 | TRP 596 -&gt; SASA: 60.83
-7KP3 | MET 597 -&gt; SASA: 21.84
-7KP3 | GLU 598 -&gt; SASA: 48.99
-7KP3 | ARG 599 -&gt; SASA: 13.65
-7KP3 | ASP 600 -&gt; SASA: 5.49
-7KP3 | VAL 601 -&gt; SASA: 2.42
-7KP3 | TYR 602 -&gt; SASA: 10.73
-7KP3 | LEU 603 -&gt; SASA: 4.83
-7KP3 | GLN 604 -&gt; SASA: 17.16
-7KP3 | GLY 605 -&gt; SASA: 2.42
-7KP3 | PRO 606 -&gt; SASA: 25.22
-7KP3 | ILE 607 -&gt; SASA: 1.21
-7KP3 | TRP 608 -&gt; SASA: 6.97
-7KP3 | ALA 609 -&gt; SASA: 17.98
-7KP3 | LYS 610 -&gt; SASA: 51.64
-7KP3 | ILE 611 -&gt; SASA: 24.82
-7KP3 | PRO 612 -&gt; SASA: 97.94
-7KP3 | GLU 613 -&gt; SASA: 151.50
-7KP3 | THR 614 -&gt; SASA: 103.10
-7KP3 | GLY 615 -&gt; SASA: 88.82
-7KP3 | ALA 616 -&gt; SASA: 75.40
-7KP3 | HIS 617 -&gt; SASA: 122.60
-7KP3 | PHE 618 -&gt; SASA: 132.39
-7KP3 | HIS 619 -&gt; SASA: 89.23
-7KP3 | PRO 620 -&gt; SASA: 59.43
-7KP3 | SER 621 -&gt; SASA: 32.96
-7KP3 | PRO 622 -&gt; SASA: 20.30
-7KP3 | ALA 623 -&gt; SASA: 39.05
-7KP3 | MET 624 -&gt; SASA: 77.51
-7KP3 | GLY 625 -&gt; SASA: 2.14
-7KP3 | GLY 626 -&gt; SASA: 19.33
-7KP3 | PHE 627 -&gt; SASA: 9.66
-7KP3 | GLY 628 -&gt; SASA: 19.67
-7KP3 | LEU 629 -&gt; SASA: 0.00
-7KP3 | LYS 630 -&gt; SASA: 127.80
-7KP3 | HIS 631 -&gt; SASA: 89.07
-7KP3 | PRO 632 -&gt; SASA: 0.00
-7KP3 | PRO 633 -&gt; SASA: 3.49
-7KP3 | PRO 634 -&gt; SASA: 12.33
-7KP3 | MET 635 -&gt; SASA: 3.62
-7KP3 | MET 636 -&gt; SASA: 0.00
-7KP3 | LEU 637 -&gt; SASA: 0.00
-7KP3 | ILE 638 -&gt; SASA: 0.00
-7KP3 | LYS 639 -&gt; SASA: 15.31
-7KP3 | ASN 640 -&gt; SASA: 5.54
-7KP3 | THR 641 -&gt; SASA: 22.94
-7KP3 | PRO 642 -&gt; SASA: 51.23
-7KP3 | VAL 643 -&gt; SASA: 39.74
-7KP3 | PRO 644 -&gt; SASA: 70.82
-7KP3 | GLY 645 -&gt; SASA: 18.23
-7KP3 | ASN 646 -&gt; SASA: 141.37
-7KP3 | ILE 647 -&gt; SASA: 79.67
-7KP3 | THR 648 -&gt; SASA: 115.21
-7KP3 | SER 649 -&gt; SASA: 82.05
-7KP3 | PHE 650 -&gt; SASA: 184.37
-7KP3 | SER 651 -&gt; SASA: 64.66
-7KP3 | ASP 652 -&gt; SASA: 136.10
-7KP3 | VAL 653 -&gt; SASA: 102.63
-7KP3 | PRO 654 -&gt; SASA: 109.60
-7KP3 | VAL 655 -&gt; SASA: 71.23
-7KP3 | SER 656 -&gt; SASA: 91.92
-7KP3 | SER 657 -&gt; SASA: 57.45
-7KP3 | PHE 658 -&gt; SASA: 51.16
-7KP3 | ILE 659 -&gt; SASA: 56.62
-7KP3 | THR 660 -&gt; SASA: 75.09
-7KP3 | GLN 661 -&gt; SASA: 8.75
-7KP3 | TYR 662 -&gt; SASA: 58.59
-7KP3 | SER 663 -&gt; SASA: 0.00
-7KP3 | THR 664 -&gt; SASA: 24.93
-7KP3 | GLY 665 -&gt; SASA: 0.00
-7KP3 | GLN 666 -&gt; SASA: 27.71
-7KP3 | VAL 667 -&gt; SASA: 2.42
-7KP3 | THR 668 -&gt; SASA: 16.91
-7KP3 | VAL 669 -&gt; SASA: 2.28
-7KP3 | GLU 670 -&gt; SASA: 53.73
-7KP3 | MET 671 -&gt; SASA: 0.00
-7KP3 | GLU 672 -&gt; SASA: 53.07
-7KP3 | TRP 673 -&gt; SASA: 0.00
-7KP3 | GLU 674 -&gt; SASA: 25.72
-7KP3 | LEU 675 -&gt; SASA: 7.64
-7KP3 | LYS 676 -&gt; SASA: 65.53
-7KP3 | LYS 677 -&gt; SASA: 128.33
-7KP3 | GLU 678 -&gt; SASA: 66.70
-7KP3 | ASN 679 -&gt; SASA: 123.32
-7KP3 | SER 680 -&gt; SASA: 37.00
-7KP3 | LYS 681 -&gt; SASA: 185.78
-7KP3 | ARG 682 -&gt; SASA: 92.31
-7KP3 | TRP 683 -&gt; SASA: 245.00
-7KP3 | ASN 684 -&gt; SASA: 89.85
-7KP3 | PRO 685 -&gt; SASA: 117.12
-7KP3 | GLU 686 -&gt; SASA: 51.19
-7KP3 | ILE 687 -&gt; SASA: 115.70
-7KP3 | GLN 688 -&gt; SASA: 76.69
-7KP3 | TYR 689 -&gt; SASA: 28.44
-7KP3 | THR 690 -&gt; SASA: 73.62
-7KP3 | ASN 691 -&gt; SASA: 106.63
-7KP3 | ASN 692 -&gt; SASA: 96.87
-7KP3 | TYR 693 -&gt; SASA: 79.40
-7KP3 | ASN 694 -&gt; SASA: 139.94
-7KP3 | ASP 695 -&gt; SASA: 113.44
-7KP3 | PRO 696 -&gt; SASA: 82.34
-7KP3 | GLN 697 -&gt; SASA: 149.92
-7KP3 | PHE 698 -&gt; SASA: 89.37
-7KP3 | VAL 699 -&gt; SASA: 95.90
-7KP3 | ASP 700 -&gt; SASA: 9.73
-7KP3 | PHE 701 -&gt; SASA: 39.27
-7KP3 | ALA 702 -&gt; SASA: 16.77
-7KP3 | PRO 703 -&gt; SASA: 67.32
-7KP3 | ASP 704 -&gt; SASA: 43.97
-7KP3 | SER 705 -&gt; SASA: 121.30
-7KP3 | THR 706 -&gt; SASA: 105.66
-7KP3 | GLY 707 -&gt; SASA: 37.70
-7KP3 | GLU 708 -&gt; SASA: 97.42
-7KP3 | TYR 709 -&gt; SASA: 42.53
-7KP3 | ARG 710 -&gt; SASA: 66.00
-7KP3 | THR 711 -&gt; SASA: 22.54
-7KP3 | THR 712 -&gt; SASA: 58.85
-7KP3 | ARG 713 -&gt; SASA: 51.95
-7KP3 | PRO 714 -&gt; SASA: 32.98
-7KP3 | ILE 715 -&gt; SASA: 4.83
-7KP3 | GLY 716 -&gt; SASA: 7.02
-7KP3 | THR 717 -&gt; SASA: 0.00
-7KP3 | ARG 718 -&gt; SASA: 15.13
-7KP3 | TYR 719 -&gt; SASA: 52.01
-7KP3 | LEU 720 -&gt; SASA: 3.62
-7KP3 | THR 721 -&gt; SASA: 26.82
-7KP3 | ARG 722 -&gt; SASA: 71.75
-7KP3 | PRO 723 -&gt; SASA: 94.70
-7KP3 | LEU 724 -&gt; SASA: 110.96
-7WJW | ASP 219 -&gt; SASA: 169.24
-7WJW | GLY 220 -&gt; SASA: 25.36
-7WJW | VAL 221 -&gt; SASA: 96.05
-7WJW | GLY 222 -&gt; SASA: 77.45
-7WJW | SER 223 -&gt; SASA: 75.76
-7WJW | SER 224 -&gt; SASA: 69.38
-7WJW | SER 225 -&gt; SASA: 26.80
-7WJW | GLY 226 -&gt; SASA: 20.92
-7WJW | ASN 227 -&gt; SASA: 128.31
-7WJW | TRP 228 -&gt; SASA: 136.95
-7WJW | HIS 229 -&gt; SASA: 79.50
-7WJW | CYS 230 -&gt; SASA: 52.06
-7WJW | ASP 231 -&gt; SASA: 86.05
-7WJW | SER 232 -&gt; SASA: 31.79
-7WJW | GLN 233 -&gt; SASA: 86.03
-7WJW | TRP 234 -&gt; SASA: 76.62
-7WJW | LEU 235 -&gt; SASA: 93.90
-7WJW | GLY 236 -&gt; SASA: 64.72
-7WJW | ASP 237 -&gt; SASA: 59.49
-7WJW | ARG 238 -&gt; SASA: 64.84
-7WJW | VAL 239 -&gt; SASA: 0.00
-7WJW | ILE 240 -&gt; SASA: 28.98
-7WJW | THR 241 -&gt; SASA: 0.00
-7WJW | THR 242 -&gt; SASA: 6.43
-7WJW | SER 243 -&gt; SASA: 1.21
-7WJW | THR 244 -&gt; SASA: 0.00
-7WJW | ARG 245 -&gt; SASA: 6.56
-7WJW | THR 246 -&gt; SASA: 27.49
-7WJW | TRP 247 -&gt; SASA: 0.00
-7WJW | ALA 248 -&gt; SASA: 26.16
-7WJW | LEU 249 -&gt; SASA: 1.21
-7WJW | PRO 250 -&gt; SASA: 41.88
-7WJW | THR 251 -&gt; SASA: 42.24
-7WJW | TYR 252 -&gt; SASA: 41.09
-7WJW | ASN 253 -&gt; SASA: 42.56
-7WJW | ASN 254 -&gt; SASA: 83.10
-7WJW | HIS 255 -&gt; SASA: 33.07
-7WJW | LEU 256 -&gt; SASA: 59.17
-7WJW | TYR 257 -&gt; SASA: 53.35
-7WJW | LYS 258 -&gt; SASA: 111.10
-7WJW | GLN 259 -&gt; SASA: 92.15
-7WJW | ILE 260 -&gt; SASA: 48.31
-7WJW | SER 261 -&gt; SASA: 6.43
-7WJW | ASN 262 -&gt; SASA: 12.19
-7WJW | SER 263 -&gt; SASA: 71.57
-7WJW | THR 264 -&gt; SASA: 90.75
-7WJW | SER 265 -&gt; SASA: 76.79
-7WJW | GLY 266 -&gt; SASA: 39.33
-7WJW | GLY 267 -&gt; SASA: 77.19
-7WJW | SER 268 -&gt; SASA: 71.28
-7WJW | SER 269 -&gt; SASA: 75.78
-7WJW | ASN 270 -&gt; SASA: 92.72
-7WJW | ASP 271 -&gt; SASA: 57.88
-7WJW | ASN 272 -&gt; SASA: 112.35
-7WJW | ALA 273 -&gt; SASA: 15.14
-7WJW | TYR 274 -&gt; SASA: 64.65
-7WJW | PHE 275 -&gt; SASA: 14.49
-7WJW | GLY 276 -&gt; SASA: 0.00
-7WJW | TYR 277 -&gt; SASA: 29.08
-7WJW | SER 278 -&gt; SASA: 16.63
-7WJW | THR 279 -&gt; SASA: 0.00
-7WJW | PRO 280 -&gt; SASA: 3.35
-7WJW | TRP 281 -&gt; SASA: 0.00
-7WJW | GLY 282 -&gt; SASA: 0.00
-7WJW | TYR 283 -&gt; SASA: 12.19
-7WJW | PHE 284 -&gt; SASA: 2.42
-7WJW | ASP 285 -&gt; SASA: 2.14
-7WJW | PHE 286 -&gt; SASA: 1.21
-7WJW | ASN 287 -&gt; SASA: 5.58
-7WJW | ARG 288 -&gt; SASA: 49.14
-7WJW | PHE 289 -&gt; SASA: 0.00
-7WJW | HIS 290 -&gt; SASA: 20.30
-7WJW | CYS 291 -&gt; SASA: 1.07
-7WJW | HIS 292 -&gt; SASA: 11.92
-7WJW | PHE 293 -&gt; SASA: 2.28
-7WJW | SER 294 -&gt; SASA: 60.10
-7WJW | PRO 295 -&gt; SASA: 32.33
-7WJW | ARG 296 -&gt; SASA: 130.44
-7WJW | ASP 297 -&gt; SASA: 3.51
-7WJW | TRP 298 -&gt; SASA: 0.00
-7WJW | GLN 299 -&gt; SASA: 47.68
-7WJW | ARG 300 -&gt; SASA: 92.55
-7WJW | LEU 301 -&gt; SASA: 0.00
-7WJW | ILE 302 -&gt; SASA: 0.00
-7WJW | ASN 303 -&gt; SASA: 18.00
-7WJW | ASN 304 -&gt; SASA: 79.14
-7WJW | ASN 305 -&gt; SASA: 1.21
-7WJW | TRP 306 -&gt; SASA: 32.47
-7WJW | GLY 307 -&gt; SASA: 1.21
-7WJW | PHE 308 -&gt; SASA: 1.21
-7WJW | ARG 309 -&gt; SASA: 38.39
-7WJW | PRO 310 -&gt; SASA: 0.00
-7WJW | LYS 311 -&gt; SASA: 32.85
-7WJW | ARG 312 -&gt; SASA: 84.12
-7WJW | LEU 313 -&gt; SASA: 1.07
-7WJW | ASN 314 -&gt; SASA: 31.52
-7WJW | PHE 315 -&gt; SASA: 0.00
-7WJW | LYS 316 -&gt; SASA: 54.25
-7WJW | LEU 317 -&gt; SASA: 1.07
-7WJW | PHE 318 -&gt; SASA: 4.83
-7WJW | ASN 319 -&gt; SASA: 41.08
-7WJW | ILE 320 -&gt; SASA: 2.14
-7WJW | GLN 321 -&gt; SASA: 85.93
-7WJW | VAL 322 -&gt; SASA: 0.00
-7WJW | LYS 323 -&gt; SASA: 49.37
-7WJW | GLU 324 -&gt; SASA: 40.72
-7WJW | VAL 325 -&gt; SASA: 33.00
-7WJW | THR 326 -&gt; SASA: 35.94
-7WJW | ASP 327 -&gt; SASA: 103.73
-7WJW | ASN 328 -&gt; SASA: 160.92
-7WJW | ASN 329 -&gt; SASA: 90.02
-7WJW | GLY 330 -&gt; SASA: 80.70
-7WJW | VAL 331 -&gt; SASA: 113.72
-7WJW | LYS 332 -&gt; SASA: 106.20
-7WJW | THR 333 -&gt; SASA: 61.30
-7WJW | ILE 334 -&gt; SASA: 81.77
-7WJW | ALA 335 -&gt; SASA: 44.68
-7WJW | ASN 336 -&gt; SASA: 89.72
-7WJW | ASN 337 -&gt; SASA: 20.67
-7WJW | LEU 338 -&gt; SASA: 87.84
-7WJW | THR 339 -&gt; SASA: 92.25
-7WJW | SER 340 -&gt; SASA: 5.77
-7WJW | THR 341 -&gt; SASA: 23.09
-7WJW | VAL 342 -&gt; SASA: 0.00
-7WJW | GLN 343 -&gt; SASA: 15.16
-7WJW | VAL 344 -&gt; SASA: 1.07
-7WJW | PHE 345 -&gt; SASA: 9.66
-7WJW | THR 346 -&gt; SASA: 36.88
-7WJW | ASP 347 -&gt; SASA: 5.63
-7WJW | SER 348 -&gt; SASA: 71.09
-7WJW | ASP 349 -&gt; SASA: 110.15
-7WJW | TYR 350 -&gt; SASA: 40.48
-7WJW | GLN 351 -&gt; SASA: 100.64
-7WJW | LEU 352 -&gt; SASA: 8.71
-7WJW | PRO 353 -&gt; SASA: 33.81
-7WJW | TYR 354 -&gt; SASA: 52.17
-7WJW | VAL 355 -&gt; SASA: 24.02
-7WJW | LEU 356 -&gt; SASA: 8.87
-7WJW | GLY 357 -&gt; SASA: 21.75
-7WJW | SER 358 -&gt; SASA: 64.85
-7WJW | ALA 359 -&gt; SASA: 43.03
-7WJW | HIS 360 -&gt; SASA: 83.10
-7WJW | GLU 361 -&gt; SASA: 159.37
-7WJW | GLY 362 -&gt; SASA: 24.77
-7WJW | CYS 363 -&gt; SASA: 16.29
-7WJW | LEU 364 -&gt; SASA: 2.42
-7WJW | PRO 365 -&gt; SASA: 13.28
-7WJW | PRO 366 -&gt; SASA: 40.77
-7WJW | PHE 367 -&gt; SASA: 78.38
-7WJW | PRO 368 -&gt; SASA: 40.92
-7WJW | ALA 369 -&gt; SASA: 88.02
-7WJW | ASP 370 -&gt; SASA: 53.35
-7WJW | VAL 371 -&gt; SASA: 104.01
-7WJW | PHE 372 -&gt; SASA: 16.91
-7WJW | MET 373 -&gt; SASA: 123.05
-7WJW | ILE 374 -&gt; SASA: 1.07
-7WJW | PRO 375 -&gt; SASA: 18.11
-7WJW | GLN 376 -&gt; SASA: 72.19
-7WJW | TYR 377 -&gt; SASA: 0.00
-7WJW | GLY 378 -&gt; SASA: 32.21
-7WJW | TYR 379 -&gt; SASA: 3.62
-7WJW | LEU 380 -&gt; SASA: 86.05
-7WJW | THR 381 -&gt; SASA: 25.34
-7WJW | LEU 382 -&gt; SASA: 85.40
-7WJW | ASN 383 -&gt; SASA: 17.37
-7WJW | ASP 384 -&gt; SASA: 97.93
-7WJW | GLY 385 -&gt; SASA: 32.90
-7WJW | SER 386 -&gt; SASA: 44.29
-7WJW | GLN 387 -&gt; SASA: 128.86
-7WJW | ALA 388 -&gt; SASA: 45.52
-7WJW | VAL 389 -&gt; SASA: 63.87
-7WJW | GLY 390 -&gt; SASA: 89.22
-7WJW | ARG 391 -&gt; SASA: 180.23
-7WJW | SER 392 -&gt; SASA: 10.85
-7WJW | SER 393 -&gt; SASA: 55.95
-7WJW | PHE 394 -&gt; SASA: 112.16
-7WJW | TYR 395 -&gt; SASA: 77.22
-7WJW | CYS 396 -&gt; SASA: 46.57
-7WJW | LEU 397 -&gt; SASA: 0.00
-7WJW | GLU 398 -&gt; SASA: 94.51
-7WJW | TYR 399 -&gt; SASA: 201.96
-7WJW | PHE 400 -&gt; SASA: 33.13
-7WJW | PRO 401 -&gt; SASA: 114.96
-7WJW | SER 402 -&gt; SASA: 48.42
-7WJW | GLN 403 -&gt; SASA: 83.38
-7WJW | MET 404 -&gt; SASA: 112.03
-7WJW | LEU 405 -&gt; SASA: 0.00
-7WJW | ARG 406 -&gt; SASA: 124.92
-7WJW | THR 407 -&gt; SASA: 31.42
-7WJW | GLY 408 -&gt; SASA: 14.56
-7WJW | ASN 409 -&gt; SASA: 69.90
-7WJW | ASN 410 -&gt; SASA: 71.54
-7WJW | PHE 411 -&gt; SASA: 10.73
-7WJW | GLN 412 -&gt; SASA: 108.42
-7WJW | PHE 413 -&gt; SASA: 24.15
-7WJW | SER 414 -&gt; SASA: 82.65
-7WJW | TYR 415 -&gt; SASA: 32.20
-7WJW | GLU 416 -&gt; SASA: 109.43
-7WJW | PHE 417 -&gt; SASA: 8.57
-7WJW | GLU 418 -&gt; SASA: 75.74
-7WJW | ASN 419 -&gt; SASA: 122.33
-7WJW | VAL 420 -&gt; SASA: 7.25
-7WJW | PRO 421 -&gt; SASA: 90.16
-7WJW | PHE 422 -&gt; SASA: 80.81
-7WJW | HIS 423 -&gt; SASA: 15.72
-7WJW | SER 424 -&gt; SASA: 31.53
-7WJW | SER 425 -&gt; SASA: 0.00
-7WJW | TYR 426 -&gt; SASA: 27.88
-7WJW | ALA 427 -&gt; SASA: 19.19
-7WJW | HIS 428 -&gt; SASA: 29.97
-7WJW | SER 429 -&gt; SASA: 58.97
-7WJW | GLN 430 -&gt; SASA: 57.99
-7WJW | SER 431 -&gt; SASA: 47.52
-7WJW | LEU 432 -&gt; SASA: 21.19
-7WJW | ASP 433 -&gt; SASA: 67.03
-7WJW | ARG 434 -&gt; SASA: 106.11
-7WJW | LEU 435 -&gt; SASA: 80.47
-7WJW | MET 436 -&gt; SASA: 47.12
-7WJW | ASN 437 -&gt; SASA: 92.06
-7WJW | PRO 438 -&gt; SASA: 72.97
-7WJW | LEU 439 -&gt; SASA: 143.11
-7WJW | ILE 440 -&gt; SASA: 100.35
-7WJW | ASP 441 -&gt; SASA: 75.27
-7WJW | GLN 442 -&gt; SASA: 43.19
-7WJW | TYR 443 -&gt; SASA: 186.44
-7WJW | LEU 444 -&gt; SASA: 85.74
-7WJW | TYR 445 -&gt; SASA: 151.45
-7WJW | TYR 446 -&gt; SASA: 44.78
-7WJW | LEU 447 -&gt; SASA: 83.93
-7WJW | SER 448 -&gt; SASA: 62.42
-7WJW | LYS 449 -&gt; SASA: 95.56
-7WJW | THR 450 -&gt; SASA: 35.53
-7WJW | ILE 451 -&gt; SASA: 95.96
-7WJW | ASN 452 -&gt; SASA: 73.04
-7WJW | GLY 453 -&gt; SASA: 44.37
-7WJW | SER 454 -&gt; SASA: 115.88
-7WJW | GLY 455 -&gt; SASA: 28.58
-7WJW | GLN 456 -&gt; SASA: 177.96
-7WJW | ASN 457 -&gt; SASA: 136.21
-7WJW | GLN 458 -&gt; SASA: 75.08
-7WJW | GLN 459 -&gt; SASA: 120.84
-7WJW | THR 460 -&gt; SASA: 49.51
-7WJW | LEU 461 -&gt; SASA: 112.62
-7WJW | LYS 462 -&gt; SASA: 106.27
-7WJW | PHE 463 -&gt; SASA: 125.36
-7WJW | SER 464 -&gt; SASA: 30.99
-7WJW | VAL 465 -&gt; SASA: 66.97
-7WJW | ALA 466 -&gt; SASA: 0.00
-7WJW | GLY 467 -&gt; SASA: 7.13
-7WJW | PRO 468 -&gt; SASA: 37.01
-7WJW | SER 469 -&gt; SASA: 121.60
-7WJW | ASN 470 -&gt; SASA: 66.79
-7WJW | MET 471 -&gt; SASA: 62.78
-7WJW | ALA 472 -&gt; SASA: 65.92
-7WJW | VAL 473 -&gt; SASA: 62.80
-7WJW | GLN 474 -&gt; SASA: 24.45
-7WJW | GLY 475 -&gt; SASA: 39.79
-7WJW | ARG 476 -&gt; SASA: 80.72
-7WJW | ASN 477 -&gt; SASA: 144.24
-7WJW | TYR 478 -&gt; SASA: 127.56
-7WJW | ILE 479 -&gt; SASA: 59.17
-7WJW | PRO 480 -&gt; SASA: 45.89
-7WJW | GLY 481 -&gt; SASA: 0.00
-7WJW | PRO 482 -&gt; SASA: 22.94
-7WJW | SER 483 -&gt; SASA: 5.49
-7WJW | TYR 484 -&gt; SASA: 67.44
-7WJW | ARG 485 -&gt; SASA: 71.66
-7WJW | GLN 486 -&gt; SASA: 7.79
-7WJW | GLN 487 -&gt; SASA: 73.74
-7WJW | ARG 488 -&gt; SASA: 102.54
-7WJW | VAL 489 -&gt; SASA: 20.53
-7WJW | SER 490 -&gt; SASA: 6.56
-7WJW | THR 491 -&gt; SASA: 71.72
-7WJW | THR 492 -&gt; SASA: 58.85
-7WJW | VAL 493 -&gt; SASA: 119.29
-7WJW | THR 494 -&gt; SASA: 118.51
-7WJW | GLN 495 -&gt; SASA: 97.98
-7WJW | ASN 496 -&gt; SASA: 38.65
-7WJW | ASN 497 -&gt; SASA: 100.25
-7WJW | ASN 498 -&gt; SASA: 146.40
-7WJW | SER 499 -&gt; SASA: 59.16
-7WJW | GLU 500 -&gt; SASA: 126.73
-7WJW | PHE 501 -&gt; SASA: 45.78
-7WJW | ALA 502 -&gt; SASA: 60.93
-7WJW | TRP 503 -&gt; SASA: 118.89
-7WJW | PRO 504 -&gt; SASA: 94.53
-7WJW | GLY 505 -&gt; SASA: 35.12
-7WJW | ALA 506 -&gt; SASA: 23.18
-7WJW | SER 507 -&gt; SASA: 17.89
-7WJW | SER 508 -&gt; SASA: 39.69
-7WJW | TRP 509 -&gt; SASA: 99.66
-7WJW | ALA 510 -&gt; SASA: 74.68
-7WJW | LEU 511 -&gt; SASA: 97.82
-7WJW | ASN 512 -&gt; SASA: 121.54
-7WJW | GLY 513 -&gt; SASA: 64.34
-7WJW | ARG 514 -&gt; SASA: 63.66
-7WJW | ASN 515 -&gt; SASA: 68.73
-7WJW | SER 516 -&gt; SASA: 37.03
-7WJW | LEU 517 -&gt; SASA: 58.59
-7WJW | MET 518 -&gt; SASA: 25.90
-7WJW | ASN 519 -&gt; SASA: 85.25
-7WJW | PRO 520 -&gt; SASA: 4.42
-7WJW | GLY 521 -&gt; SASA: 1.21
-7WJW | PRO 522 -&gt; SASA: 43.20
-7WJW | ALA 523 -&gt; SASA: 10.05
-7WJW | MET 524 -&gt; SASA: 10.70
-7WJW | ALA 525 -&gt; SASA: 0.00
-7WJW | SER 526 -&gt; SASA: 2.14
-7WJW | HIS 527 -&gt; SASA: 12.49
-7WJW | LYS 528 -&gt; SASA: 61.13
-7WJW | GLU 529 -&gt; SASA: 140.46
-7WJW | GLY 530 -&gt; SASA: 83.62
-7WJW | GLU 531 -&gt; SASA: 51.70
-7WJW | ASP 532 -&gt; SASA: 98.01
-7WJW | ARG 533 -&gt; SASA: 91.02
-7WJW | PHE 534 -&gt; SASA: 32.06
-7WJW | PHE 535 -&gt; SASA: 32.61
-7WJW | PRO 536 -&gt; SASA: 0.00
-7WJW | LEU 537 -&gt; SASA: 34.05
-7WJW | SER 538 -&gt; SASA: 8.18
-7WJW | GLY 539 -&gt; SASA: 3.21
-7WJW | SER 540 -&gt; SASA: 2.14
-7WJW | LEU 541 -&gt; SASA: 28.98
-7WJW | ILE 542 -&gt; SASA: 83.93
-7WJW | PHE 543 -&gt; SASA: 25.36
-7WJW | GLY 544 -&gt; SASA: 50.98
-7WJW | LYS 545 -&gt; SASA: 76.60
-7WJW | GLN 546 -&gt; SASA: 114.91
-7WJW | GLY 547 -&gt; SASA: 69.15
-7WJW | THR 548 -&gt; SASA: 45.47
-7WJW | GLY 549 -&gt; SASA: 50.84
-7WJW | ARG 550 -&gt; SASA: 213.98
-7WJW | ASP 551 -&gt; SASA: 104.87
-7WJW | ASN 552 -&gt; SASA: 157.02
-7WJW | VAL 553 -&gt; SASA: 48.34
-7WJW | ASP 554 -&gt; SASA: 94.46
-7WJW | ALA 555 -&gt; SASA: 75.31
-7WJW | ASP 556 -&gt; SASA: 107.67
-7WJW | LYS 557 -&gt; SASA: 85.76
-7WJW | VAL 558 -&gt; SASA: 41.18
-7WJW | MET 559 -&gt; SASA: 14.49
-7WJW | ILE 560 -&gt; SASA: 65.38
-7WJW | THR 561 -&gt; SASA: 4.56
-7WJW | ASN 562 -&gt; SASA: 49.98
-7WJW | GLU 563 -&gt; SASA: 1.21
-7WJW | GLU 564 -&gt; SASA: 64.71
-7WJW | GLU 565 -&gt; SASA: 25.73
-7WJW | ILE 566 -&gt; SASA: 0.00
-7WJW | LYS 567 -&gt; SASA: 60.62
-7WJW | THR 568 -&gt; SASA: 25.48
-7WJW | THR 569 -&gt; SASA: 8.18
-7WJW | ASN 570 -&gt; SASA: 2.14
-7WJW | PRO 571 -&gt; SASA: 15.70
-7WJW | VAL 572 -&gt; SASA: 34.68
-7WJW | ALA 573 -&gt; SASA: 3.62
-7WJW | THR 574 -&gt; SASA: 2.42
-7WJW | GLU 575 -&gt; SASA: 59.90
-7WJW | SER 576 -&gt; SASA: 37.93
-7WJW | TYR 577 -&gt; SASA: 56.84
-7WJW | GLY 578 -&gt; SASA: 20.39
-7WJW | GLN 579 -&gt; SASA: 113.53
-7WJW | VAL 580 -&gt; SASA: 71.25
-7WJW | ALA 581 -&gt; SASA: 79.99
-7WJW | THR 582 -&gt; SASA: 94.79
-7WJW | ASN 583 -&gt; SASA: 51.87
-7WJW | HIS 584 -&gt; SASA: 150.59
-7WJW | GLN 585 -&gt; SASA: 138.47
-7WJW | SER 586 -&gt; SASA: 66.87
-7WJW | ALA 587 -&gt; SASA: 80.79
-7WJW | GLN 588 -&gt; SASA: 160.23
-7WJW | ALA 589 -&gt; SASA: 49.26
-7WJW | GLN 590 -&gt; SASA: 161.45
-7WJW | ALA 591 -&gt; SASA: 55.56
-7WJW | GLN 592 -&gt; SASA: 104.87
-7WJW | THR 593 -&gt; SASA: 75.53
-7WJW | GLY 594 -&gt; SASA: 25.09
-7WJW | TRP 595 -&gt; SASA: 156.82
-7WJW | VAL 596 -&gt; SASA: 16.91
-7WJW | GLN 597 -&gt; SASA: 86.63
-7WJW | ASN 598 -&gt; SASA: 94.28
-7WJW | GLN 599 -&gt; SASA: 41.59
-7WJW | GLY 600 -&gt; SASA: 48.14
-7WJW | ILE 601 -&gt; SASA: 71.60
-7WJW | LEU 602 -&gt; SASA: 75.26
-7WJW | PRO 603 -&gt; SASA: 118.72
-7WJW | GLY 604 -&gt; SASA: 36.82
-7WJW | MET 605 -&gt; SASA: 12.86
-7WJW | VAL 606 -&gt; SASA: 49.51
-7WJW | TRP 607 -&gt; SASA: 78.87
-7WJW | GLN 608 -&gt; SASA: 9.43
-7WJW | ASP 609 -&gt; SASA: 44.42
-7WJW | ARG 610 -&gt; SASA: 12.53
-7WJW | ASP 611 -&gt; SASA: 0.00
-7WJW | VAL 612 -&gt; SASA: 3.62
-7WJW | TYR 613 -&gt; SASA: 8.45
-7WJW | LEU 614 -&gt; SASA: 0.00
-7WJW | GLN 615 -&gt; SASA: 9.66
-7WJW | GLY 616 -&gt; SASA: 0.00
-7WJW | PRO 617 -&gt; SASA: 7.25
-7WJW | ILE 618 -&gt; SASA: 1.07
-7WJW | TRP 619 -&gt; SASA: 3.21
-7WJW | ALA 620 -&gt; SASA: 17.84
-7WJW | LYS 621 -&gt; SASA: 69.37
-7WJW | ILE 622 -&gt; SASA: 15.56
-7WJW | PRO 623 -&gt; SASA: 86.95
-7WJW | HIS 624 -&gt; SASA: 172.75
-7WJW | THR 625 -&gt; SASA: 74.31
-7WJW | ASP 626 -&gt; SASA: 163.28
-7WJW | GLY 627 -&gt; SASA: 73.34
-7WJW | ASN 628 -&gt; SASA: 76.88
-7WJW | PHE 629 -&gt; SASA: 135.76
-7WJW | HIS 630 -&gt; SASA: 86.65
-7WJW | PRO 631 -&gt; SASA: 57.56
-7WJW | SER 632 -&gt; SASA: 30.20
-7WJW | PRO 633 -&gt; SASA: 28.57
-7WJW | LEU 634 -&gt; SASA: 80.34
-7WJW | MET 635 -&gt; SASA: 54.49
-7WJW | GLY 636 -&gt; SASA: 3.35
-7WJW | GLY 637 -&gt; SASA: 9.67
-7WJW | PHE 638 -&gt; SASA: 3.62
-7WJW | GLY 639 -&gt; SASA: 19.37
-7WJW | MET 640 -&gt; SASA: 0.00
-7WJW | LYS 641 -&gt; SASA: 74.65
-7WJW | HIS 642 -&gt; SASA: 97.25
-7WJW | PRO 643 -&gt; SASA: 0.00
-7WJW | PRO 644 -&gt; SASA: 1.07
-7WJW | PRO 645 -&gt; SASA: 6.04
-7WJW | GLN 646 -&gt; SASA: 2.30
-7WJW | ILE 647 -&gt; SASA: 0.00
-7WJW | LEU 648 -&gt; SASA: 0.00
-7WJW | ILE 649 -&gt; SASA: 0.00
-7WJW | LYS 650 -&gt; SASA: 17.20
-7WJW | ASN 651 -&gt; SASA: 0.00
-7WJW | THR 652 -&gt; SASA: 22.94
-7WJW | PRO 653 -&gt; SASA: 44.66
-7WJW | VAL 654 -&gt; SASA: 38.64
-7WJW | PRO 655 -&gt; SASA: 65.58
-7WJW | ALA 656 -&gt; SASA: 49.46
-7WJW | ASP 657 -&gt; SASA: 108.54
-7WJW | PRO 658 -&gt; SASA: 77.66
-7WJW | PRO 659 -&gt; SASA: 83.70
-7WJW | THR 660 -&gt; SASA: 160.27
-7WJW | ALA 661 -&gt; SASA: 68.04
-7WJW | PHE 662 -&gt; SASA: 172.16
-7WJW | ASN 663 -&gt; SASA: 101.82
-7WJW | LYS 664 -&gt; SASA: 177.51
-7WJW | ASP 665 -&gt; SASA: 100.96
-7WJW | LYS 666 -&gt; SASA: 135.09
-7WJW | LEU 667 -&gt; SASA: 64.94
-7WJW | ASN 668 -&gt; SASA: 105.14
-7WJW | SER 669 -&gt; SASA: 53.64
-7WJW | PHE 670 -&gt; SASA: 53.44
-7WJW | ILE 671 -&gt; SASA: 55.81
-7WJW | THR 672 -&gt; SASA: 89.93
-7WJW | GLN 673 -&gt; SASA: 7.68
-7WJW | TYR 674 -&gt; SASA: 69.33
-7WJW | SER 675 -&gt; SASA: 0.00
-7WJW | THR 676 -&gt; SASA: 26.01
-7WJW | GLY 677 -&gt; SASA: 1.21
-7WJW | GLN 678 -&gt; SASA: 30.49
-7WJW | VAL 679 -&gt; SASA: 1.21
-7WJW | SER 680 -&gt; SASA: 2.28
-7WJW | VAL 681 -&gt; SASA: 0.00
-7WJW | GLU 682 -&gt; SASA: 55.19
-7WJW | ILE 683 -&gt; SASA: 0.00
-7WJW | GLU 684 -&gt; SASA: 22.91
-7WJW | TRP 685 -&gt; SASA: 1.21
-7WJW | GLU 686 -&gt; SASA: 33.22
-7WJW | LEU 687 -&gt; SASA: 5.49
-7WJW | GLN 688 -&gt; SASA: 69.82
-7WJW | LYS 689 -&gt; SASA: 93.38
-7WJW | GLU 690 -&gt; SASA: 55.87
-7WJW | ASN 691 -&gt; SASA: 126.65
-7WJW | SER 692 -&gt; SASA: 40.34
-7WJW | LYS 693 -&gt; SASA: 188.46
-7WJW | ARG 694 -&gt; SASA: 97.55
-7WJW | TRP 695 -&gt; SASA: 242.58
-7WJW | ASN 696 -&gt; SASA: 82.23
-7WJW | PRO 697 -&gt; SASA: 121.93
-7WJW | GLU 698 -&gt; SASA: 54.68
-7WJW | ILE 699 -&gt; SASA: 104.95
-7WJW | GLN 700 -&gt; SASA: 101.48
-7WJW | TYR 701 -&gt; SASA: 25.48
-7WJW | THR 702 -&gt; SASA: 89.84
-7WJW | SER 703 -&gt; SASA: 67.21
-7WJW | ASN 704 -&gt; SASA: 107.14
-7WJW | TYR 705 -&gt; SASA: 235.91
-7WJW | TYR 706 -&gt; SASA: 170.85
-7WJW | LYS 707 -&gt; SASA: 172.07
-7WJW | SER 708 -&gt; SASA: 88.16
-7WJW | ASN 709 -&gt; SASA: 154.84
-7WJW | ASN 710 -&gt; SASA: 71.21
-7WJW | VAL 711 -&gt; SASA: 108.92
-7WJW | GLU 712 -&gt; SASA: 67.10
-7WJW | PHE 713 -&gt; SASA: 30.31
-7WJW | ALA 714 -&gt; SASA: 32.47
-7WJW | VAL 715 -&gt; SASA: 64.13
-7WJW | ASN 716 -&gt; SASA: 45.59
-7WJW | THR 717 -&gt; SASA: 135.19
-7WJW | GLU 718 -&gt; SASA: 151.01
-7WJW | GLY 719 -&gt; SASA: 41.41
-7WJW | VAL 720 -&gt; SASA: 61.59
-7WJW | TYR 721 -&gt; SASA: 33.23
-7WJW | SER 722 -&gt; SASA: 36.19
-7WJW | GLU 723 -&gt; SASA: 27.28
-7WJW | PRO 724 -&gt; SASA: 44.66
-7WJW | ARG 725 -&gt; SASA: 59.76
-7WJW | PRO 726 -&gt; SASA: 28.69
-7WJW | ILE 727 -&gt; SASA: 1.21
-7WJW | GLY 728 -&gt; SASA: 4.49
-7WJW | THR 729 -&gt; SASA: 0.00
-7WJW | ARG 730 -&gt; SASA: 4.29
-7WJW | TYR 731 -&gt; SASA: 57.78
-7WJW | LEU 732 -&gt; SASA: 0.00
-7WJW | THR 733 -&gt; SASA: 19.99
-7WJW | ARG 734 -&gt; SASA: 93.23
-7WJW | ASN 735 -&gt; SASA: 98.42
-7WJW | LEU 736 -&gt; SASA: 86.45
-</pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[122]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Structure</th>
-      <th>Residue</th>
-      <th>Residue_Position</th>
-      <th>SASA</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>7KP3</td>
-      <td>ASP</td>
-      <td>208</td>
-      <td>140.838667</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>7KP3</td>
-      <td>GLY</td>
-      <td>209</td>
-      <td>18.114423</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>7KP3</td>
-      <td>VAL</td>
-      <td>210</td>
-      <td>98.463784</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>7KP3</td>
-      <td>GLY</td>
-      <td>211</td>
-      <td>88.951632</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>7KP3</td>
-      <td>ASN</td>
-      <td>212</td>
-      <td>79.722086</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1029</th>
-      <td>7WJW</td>
-      <td>LEU</td>
-      <td>514</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>1030</th>
-      <td>7WJW</td>
-      <td>THR</td>
-      <td>515</td>
-      <td>19.985003</td>
-    </tr>
-    <tr>
-      <th>1031</th>
-      <td>7WJW</td>
-      <td>ARG</td>
-      <td>516</td>
-      <td>93.229904</td>
-    </tr>
-    <tr>
-      <th>1032</th>
-      <td>7WJW</td>
-      <td>ASN</td>
-      <td>517</td>
-      <td>98.420342</td>
-    </tr>
-    <tr>
-      <th>1033</th>
-      <td>7WJW</td>
-      <td>LEU</td>
-      <td>518</td>
-      <td>86.451251</td>
-    </tr>
-  </tbody>
-</table>
-<p>1034 rows × 4 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -16688,7 +15913,7 @@ AAV9: 7WJW</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[111]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[149]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -16737,7 +15962,7 @@ AAV9: 7WJW</p>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[111]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[149]:</div>
 
 
 
@@ -16769,7 +15994,7 @@ AAV9: 7WJW</p>
   </thead>
   <tbody>
     <tr>
-      <th>19</th>
+      <th>18</th>
       <td>7KP3</td>
       <td>282</td>
       <td>281</td>
@@ -16785,7 +16010,7 @@ AAV9: 7WJW</p>
       <td>16.344224</td>
     </tr>
     <tr>
-      <th>26</th>
+      <th>25</th>
       <td>7KP3</td>
       <td>417</td>
       <td>416</td>
@@ -16801,7 +16026,7 @@ AAV9: 7WJW</p>
       <td>37.673024</td>
     </tr>
     <tr>
-      <th>46</th>
+      <th>45</th>
       <td>7KP3</td>
       <td>526</td>
       <td>520</td>
@@ -16814,7 +16039,7 @@ AAV9: 7WJW</p>
       <td>590</td>
       <td>584</td>
       <td>Y</td>
-      <td>42.912045</td>
+      <td>42.912044</td>
     </tr>
     <tr>
       <th>31</th>
@@ -16833,7 +16058,7 @@ AAV9: 7WJW</p>
       <td>53.430951</td>
     </tr>
     <tr>
-      <th>24</th>
+      <th>23</th>
       <td>7KP3</td>
       <td>386</td>
       <td>385</td>
@@ -16849,7 +16074,7 @@ AAV9: 7WJW</p>
       <td>77.015867</td>
     </tr>
     <tr>
-      <th>40</th>
+      <th>39</th>
       <td>7KP3</td>
       <td>494</td>
       <td>488</td>
@@ -16913,7 +16138,7 @@ AAV9: 7WJW</p>
       <td>122.952436</td>
     </tr>
     <tr>
-      <th>34</th>
+      <th>33</th>
       <td>7KP3</td>
       <td>469</td>
       <td>463</td>
@@ -16929,7 +16154,7 @@ AAV9: 7WJW</p>
       <td>0.000000</td>
     </tr>
     <tr>
-      <th>18</th>
+      <th>19</th>
       <td>7WJW</td>
       <td>282</td>
       <td>75</td>
@@ -16945,7 +16170,7 @@ AAV9: 7WJW</p>
       <td>12.485632</td>
     </tr>
     <tr>
-      <th>25</th>
+      <th>26</th>
       <td>7WJW</td>
       <td>417</td>
       <td>208</td>
@@ -16969,7 +16194,7 @@ AAV9: 7WJW</p>
       <td>32.061285</td>
     </tr>
     <tr>
-      <th>45</th>
+      <th>46</th>
       <td>7WJW</td>
       <td>526</td>
       <td>317</td>
@@ -17009,7 +16234,7 @@ AAV9: 7WJW</p>
       <td>67.437327</td>
     </tr>
     <tr>
-      <th>23</th>
+      <th>24</th>
       <td>7WJW</td>
       <td>386</td>
       <td>177</td>
@@ -17033,7 +16258,7 @@ AAV9: 7WJW</p>
       <td>99.662943</td>
     </tr>
     <tr>
-      <th>39</th>
+      <th>40</th>
       <td>7WJW</td>
       <td>494</td>
       <td>285</td>
@@ -17041,7 +16266,7 @@ AAV9: 7WJW</p>
       <td>118.894768</td>
     </tr>
     <tr>
-      <th>33</th>
+      <th>34</th>
       <td>7WJW</td>
       <td>469</td>
       <td>260</td>
@@ -17098,7 +16323,9 @@ AAV9: 7WJW</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h1>
+<h1 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h1><p>By running this analysis on a few different serotypes, we can start to identify key aromatics with potential causality for changes in absorbance measurements. This could provide a model to predict absorbance/capsid ratios and eliminate the need to perform physical experiments that require lots of hands on time and material. It also strengthens our titering model and provides explanation for differences in absorbance across serotypes.</p>
+<p>----add some screenshots of these residues in model----</p>
+
 </div>
 </div>
 </div>
